@@ -22,9 +22,9 @@ export function AuthShell({
           </p>
           <ul className="mt-8 space-y-3 text-sm text-sage">
             <li>✦ {VALUES.deliveryPromise}</li>
-            <li>✦ Authentic, official cosmetics</li>
-            <li>✦ Secure, PCI DSS compliant payment</li>
-            <li>✦ Support {VALUES.supportHours}</li>
+            <li>✦ Authentic Rust skins</li>
+            <li>✦ Visa &amp; Mastercard in EUR, GBP or USD</li>
+            <li>✦ Unused paid balance refundable on request</li>
           </ul>
         </div>
       </aside>

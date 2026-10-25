@@ -14,7 +14,7 @@ export function CheckoutForm({
   steamLinked,
   steamName,
 }: {
-  seller: { name: string; address: string };
+  seller: { name: string; address: string; regNumber: string; email: string };
   balanceMinor: number;
   steamLinked: boolean;
   steamName: string | null;
@@ -85,7 +85,7 @@ export function CheckoutForm({
           )}
         </section>
 
-        {/* Payment method — funded from your Runevault wallet */}
+        {/* Payment method — funded from your Account Balance */}
         <section className="card-surface p-5">
           <div className="mb-4 flex items-center justify-between">
             <p className="engraved text-[10px] text-gold">Payment</p>
@@ -93,7 +93,7 @@ export function CheckoutForm({
           </div>
 
           <div className="flex items-center justify-between rounded-md border border-gold/50 bg-gold/5 p-3">
-            <span className="text-sm text-parchment">Runevault wallet</span>
+            <span className="text-sm text-parchment">Account Balance</span>
             <span className="font-mono text-sm text-gold">{format(balanceMinor)}</span>
           </div>
           {!canUseBalance && (
@@ -109,6 +109,7 @@ export function CheckoutForm({
           <p className="engraved mb-3 text-[10px] text-gold">Seller</p>
           <p className="text-parchment">{seller.name}</p>
           <p className="text-sage">{seller.address}</p>
+          <p className="text-sage">Company number {seller.regNumber} · {seller.email}</p>
         </section>
       </div>
 
@@ -137,10 +138,11 @@ export function CheckoutForm({
         <label className="mt-5 flex items-start gap-2.5 text-sm text-sage">
           <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} className="mt-0.5 accent-[#E8B44A]" />
           <span>
-            I have read and agree to the{" "}
-            <Link href="/legal/terms" className="text-teal hover:underline">Terms &amp; Conditions</Link>,{" "}
-            <Link href="/legal/refunds" className="text-teal hover:underline">Refund Policy</Link> and{" "}
-            <Link href="/legal/payment" className="text-teal hover:underline">Payment Policy</Link>.
+            I agree to the{" "}
+            <Link href="/legal/terms" className="text-teal hover:underline">Terms &amp; Conditions</Link> and the{" "}
+            <Link href="/legal/payment" className="text-teal hover:underline">Payment</Link>,{" "}
+            <Link href="/legal/delivery" className="text-teal hover:underline">Digital Delivery</Link> and{" "}
+            <Link href="/legal/refunds" className="text-teal hover:underline">Refund &amp; Cancellation</Link> Policies.
           </span>
         </label>
 
@@ -155,7 +157,7 @@ export function CheckoutForm({
                 ? "Top up to continue"
                 : `Pay ${format(totalMinor)}`}
         </button>
-        <p className="mt-3 text-center text-[11px] text-sage">✦ Secure payment · Delivered to Steam via trade offer</p>
+        <p className="mt-3 text-center text-[11px] text-sage">✦ Delivered to Steam via trade offer, normally within a few minutes</p>
       </aside>
     </div>
   );

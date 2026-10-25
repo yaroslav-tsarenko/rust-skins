@@ -15,10 +15,10 @@ export interface HeaderUser {
 }
 
 const REASSURANCE = [
-  "Instant delivery",
-  "Official store",
-  "24/7 support",
-  "Secure payment",
+  "Delivery via Steam trade offer",
+  "Visa & Mastercard",
+  "EUR · GBP · USD",
+  "18+ only",
 ];
 
 interface SearchHit {
@@ -62,7 +62,7 @@ export function Header({ user }: { user: HeaderUser | null }) {
           <div className="flex items-center gap-2 text-sage" aria-live="polite">
             <span className="h-1.5 w-1.5 rounded-full bg-teal" />
             <span className="engraved text-[10px]">{REASSURANCE[strip]}</span>
-            <span className="hidden text-sage/50 sm:inline">· Official store · 24/7 support</span>
+            <span className="hidden text-sage/50 sm:inline">· Operated by BETTERB LTD</span>
           </div>
           <div className="flex items-center gap-3">
             <CurrencySelector value={currency} onChange={setCurrency} />
@@ -85,7 +85,7 @@ export function Header({ user }: { user: HeaderUser | null }) {
       {/* Main bar */}
       <div className={`border-b border-hairline bg-abyss/90 backdrop-blur transition-all ${scrolled ? "py-2" : "py-3"}`}>
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-4">
-          <Link href={homeHref} aria-label="Runevault home">
+          <Link href={homeHref} aria-label="rust-skins.com home">
             <Logo size={scrolled ? 26 : 30} />
           </Link>
 

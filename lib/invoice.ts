@@ -1,6 +1,6 @@
 import "server-only";
 import PDFDocument from "pdfkit";
-import { COMPANY, CONTACT_EMAIL, SITE, VALUES } from "./config";
+import { COMPANY, CONTACT_EMAIL, SITE, TRADEMARK_DISCLAIMER, VALUES } from "./config";
 
 export interface InvoiceData {
   reference: string;
@@ -30,7 +30,7 @@ export function buildInvoicePdf(data: InvoiceData): Promise<Buffer> {
       .fillColor(gold)
       .fontSize(24)
       .font("Helvetica-Bold")
-      .text("RUNEVAULT", { continued: false });
+      .text("RUST-SKINS.COM", { continued: false });
     doc
       .fillColor(muted)
       .fontSize(10)
@@ -68,8 +68,8 @@ export function buildInvoicePdf(data: InvoiceData): Promise<Buffer> {
       .fontSize(10)
       .text(COMPANY.name)
       .text(COMPANY.address)
-      .text(`Reg: ${COMPANY.regNumber}`)
-      .text(`${CONTACT_EMAIL} · ${COMPANY.phone}`);
+      .text(`Company number: ${COMPANY.regNumber}`)
+      .text(CONTACT_EMAIL);
 
     doc.moveDown(1.2);
     // Table header
@@ -121,14 +121,14 @@ export function buildInvoicePdf(data: InvoiceData): Promise<Buffer> {
       .fontSize(8)
       .font("Helvetica")
       .text(
-        `Tax is included in the price. Delivery: ${VALUES.deliveryPromise}. Refund window: ${VALUES.refundWindowDays} days. Support: ${VALUES.supportHours}.`,
+        `${VALUES.deliveryPromise}. Refunds and cancellations: ${SITE.url}/legal/refunds. Unused paid balance can be refunded by emailing ${CONTACT_EMAIL}.`,
         50,
         doc.y,
         { width: 495 }
       )
       .moveDown(0.5)
       .text(
-        `${SITE.url} · Runevault is not affiliated with or endorsed by Facepunch Studios or Valve Corporation. Rust is a trademark of Facepunch Studios.`,
+        `${SITE.url} · ${TRADEMARK_DISCLAIMER}`,
         { width: 495 }
       );
 

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { COUNTRIES, EXCLUDED_COUNTRIES } from "./config";
+import { COUNTRIES, EXCLUDED_COUNTRIES, VALUES } from "./config";
 
 export const registerSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -17,8 +17,8 @@ export const registerSchema = z.object({
     .refine((v) => {
       const dob = new Date(v);
       const age = (Date.now() - dob.getTime()) / (365.25 * 24 * 3600 * 1000);
-      return age >= 16 && age < 120;
-    }, "You must be at least 16"),
+      return age >= VALUES.minimumAge && age < 120;
+    }, `You must be at least ${VALUES.minimumAge}`),
   street: z.string().min(1, "Street is required").max(255),
   city: z.string().min(1, "City is required").max(120),
   country: z

@@ -18,7 +18,7 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Support",
     links: [
       { label: "FAQ", href: "/faq" },
-      { label: "Delivery", href: "/faq#delivery" },
+      { label: "Delivery", href: "/legal/delivery" },
       { label: "Refunds", href: "/legal/refunds" },
       { label: "Contact", href: "/contact" },
     ],
@@ -35,9 +35,11 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Terms & Conditions", href: "/legal/terms" },
       { label: "Privacy Policy", href: "/legal/privacy" },
+      { label: "Cookie Policy", href: "/legal/cookies" },
+      { label: "Refund & Cancellation", href: "/legal/refunds" },
+      { label: "Digital Delivery", href: "/legal/delivery" },
       { label: "Payment Policy", href: "/legal/payment" },
-      { label: "Refund Policy", href: "/legal/refunds" },
-      { label: "Cookies", href: "/legal/cookies" },
+      { label: "Account Balance & Top-Up", href: "/legal/balance" },
     ],
   },
 ];
@@ -73,11 +75,9 @@ export function Footer() {
           <div className="space-y-1 text-xs text-sage">
             <p className="text-parchment">{COMPANY.name}</p>
             <p>{COMPANY.address}</p>
-            <p>Company reg no. {COMPANY.regNumber}</p>
+            <p>Company number {COMPANY.regNumber}</p>
             <p>
               <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-gold">{CONTACT_EMAIL}</a>
-              {" · "}
-              <a href={`tel:${COMPANY.phone.replace(/\s/g, "")}`} className="hover:text-gold">{COMPANY.phone}</a>
             </p>
           </div>
           <PaymentLogos />
@@ -85,7 +85,7 @@ export function Footer() {
 
         <div className="mt-8 space-y-3 border-t border-hairline pt-6 text-xs text-sage/80">
           <p>{TRADEMARK_DISCLAIMER}</p>
-          <p>© {new Date().getFullYear()} {COMPANY.name}. All rights reserved. Trading as {SITE.name}.</p>
+          <p>© {new Date().getFullYear()} {COMPANY.name}. All rights reserved. Operator of {SITE.name}.</p>
         </div>
       </div>
     </footer>
