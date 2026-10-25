@@ -36,7 +36,7 @@ const config: Config = {
         loss: "#E5534B",
         warn: "#E8934A",
         hairline: "#25382E",
-        // Dota 2 rarity — exact game values
+        // Skin rarity scale
         rarity: {
           common: "#B0C3D9",
           uncommon: "#5E98D9",

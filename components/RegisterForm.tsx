@@ -52,7 +52,7 @@ export function RegisterForm() {
       if (!fields.dateOfBirth) e.dateOfBirth = "Date of birth is required";
       else {
         const age = (Date.now() - Date.parse(fields.dateOfBirth)) / (365.25 * 864e5);
-        if (age < 16) e.dateOfBirth = "You must be at least 16";
+        if (age < 18) e.dateOfBirth = "You must be at least 18";
       }
     }
     if (s === 2) {

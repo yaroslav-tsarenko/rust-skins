@@ -23,7 +23,7 @@ export async function generateMetadata({
   const title = `${q ? q + " " : ""}${item.name}`;
   return {
     title,
-    description: `${title} — a Rust ${RARITY_META[item.rarity as Rarity].label} skin. ${VALUES.deliveryPromise} from Runevault.`,
+    description: `${title} — a Rust ${RARITY_META[item.rarity as Rarity].label} skin. Delivered by Steam trade offer from ${SITE.name}.`,
     alternates: { canonical: `/item/${item.slug}` },
     openGraph: { title, images: [{ url: item.image }] },
   };
@@ -121,7 +121,7 @@ export default async function ItemPage({
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-sage">
             <span>✦ {VALUES.deliveryPromise}</span>
             <span>✦ Authentic Rust skin</span>
-            <span>✦ {VALUES.refundWindowDays}-day refund window</span>
+            <span>✦ <Link href="/legal/delivery" className="hover:text-gold">Delivery</Link> &amp; <Link href="/legal/refunds" className="hover:text-gold">refund</Link> policies</span>
           </div>
         </div>
       </div>

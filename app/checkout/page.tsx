@@ -6,7 +6,7 @@ import { COMPANY } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Checkout",
-  description: "Securely complete your Runevault order. PCI DSS compliant payment with instant delivery.",
+  description: "Complete your rust-skins.com order. Visa & Mastercard, delivered to Steam by trade offer.",
   robots: { index: false, follow: false },
 };
 
@@ -18,7 +18,7 @@ export default async function CheckoutPage() {
     <div className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="mb-8 font-display text-3xl font-bold tracking-tight text-parchment sm:text-4xl">Checkout</h1>
       <CheckoutForm
-        seller={{ name: COMPANY.name, address: COMPANY.address }}
+        seller={{ name: COMPANY.name, address: COMPANY.address, regNumber: COMPANY.regNumber, email: COMPANY.email }}
         balanceMinor={user.balanceMinor}
         steamLinked={Boolean(user.steamId && user.steamTradeToken)}
         steamName={user.steamName}

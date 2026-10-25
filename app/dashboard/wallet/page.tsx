@@ -20,12 +20,12 @@ export default async function WalletPage() {
       <div className="corner-brackets rounded-xl border border-gold/25 bg-card p-6 shadow-glow-soft">
         <p className="engraved text-[10px] text-sage">Available balance</p>
         <Price gbpMinor={user.balanceMinor} className="mt-1 block text-4xl text-gold" />
-        <p className="mt-2 text-sm text-sage">Use your balance for instant, one-tap checkout on any relic.</p>
+        <p className="mt-2 text-sm text-sage">Use your balance at checkout. Unused paid balance can be refunded on request — see the Account Balance & Top-Up Policy.</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div>
-          <h2 className="mb-3 font-display text-lg font-semibold text-parchment">Top up your wallet</h2>
+          <h2 className="mb-3 font-display text-lg font-semibold text-parchment">Top up your balance</h2>
           <TopUpForm />
         </div>
 

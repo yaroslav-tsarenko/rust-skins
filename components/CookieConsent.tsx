@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const KEY = "runevault.cookie-consent";
+const KEY = "rust-skins.cookie-consent";
 
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -15,7 +15,7 @@ export function CookieConsent() {
     } catch {}
   }, []);
 
-  const decide = (choice: "all" | "essential") => {
+  const decide = (choice: "essential") => {
     try {
       localStorage.setItem(KEY, choice);
     } catch {}
@@ -43,18 +43,15 @@ export function CookieConsent() {
         <div role="dialog" aria-label="Cookie consent" className="fixed inset-x-0 bottom-0 z-50 border-t border-gold/20 bg-panel/98 backdrop-blur">
           <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center">
             <div className="flex-1 text-sm text-sage">
-              <p className="mb-1 font-semibold text-parchment">We use cookies</p>
+              <p className="mb-1 font-semibold text-parchment">Cookies and browser storage</p>
               <p>
-                Runevault uses essential cookies to run the store and optional cookies to improve your experience. Read our{" "}
+                rust-skins.com uses essential cookies and browser storage to run the store, keep you signed in, process checkout and remember settings such as currency. We do not use analytics or advertising cookies. Read our{" "}
                 <Link href="/legal/cookies" className="text-teal hover:underline">Cookie Policy</Link>.
               </p>
             </div>
             <div className="flex shrink-0 gap-2">
-              <button type="button" onClick={() => decide("essential")} className="btn-ghost text-sm">
-                Essential only
-              </button>
-              <button type="button" onClick={() => decide("all")} className="btn-gold text-sm">
-                Accept all
+              <button type="button" onClick={() => decide("essential")} className="btn-gold text-sm">
+                OK
               </button>
             </div>
             {manage && (

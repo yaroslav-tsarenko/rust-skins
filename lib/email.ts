@@ -1,6 +1,6 @@
 import "server-only";
 import nodemailer from "nodemailer";
-import { SITE, COMPANY, CONTACT_EMAIL } from "./config";
+import { SITE, COMPANY, CONTACT_EMAIL, TRADEMARK_DISCLAIMER } from "./config";
 
 interface Attachment {
   filename: string;
@@ -48,23 +48,23 @@ function shell(title: string, inner: string) {
   return `<!doctype html><html><body style="margin:0;background:#0B1512;font-family:Inter,Arial,sans-serif;color:#EFEAD8;padding:32px">
   <table role="presentation" width="100%" style="max-width:560px;margin:0 auto;background:#122019;border:1px solid #25382E;border-radius:12px;overflow:hidden">
     <tr><td style="padding:24px 28px;border-bottom:1px solid #25382E">
-      <span style="font-size:20px;font-weight:700;letter-spacing:0.04em;color:#E8B44A">RUNEVAULT</span>
+      <span style="font-size:20px;font-weight:700;letter-spacing:0.04em;color:#E8B44A">RUST-SKINS.COM</span>
       <span style="display:block;font-size:12px;color:#8FA093;margin-top:4px">${title}</span>
     </td></tr>
     <tr><td style="padding:28px;line-height:1.6;font-size:15px">${inner}</td></tr>
     <tr><td style="padding:20px 28px;border-top:1px solid #25382E;font-size:12px;color:#8FA093">
-      ${COMPANY.name} · ${COMPANY.address} · Reg ${COMPANY.regNumber}<br/>
-      Need help? ${CONTACT_EMAIL} · Support ${"24/7"}<br/>
-      Runevault is not affiliated with or endorsed by Facepunch Studios or Valve Corporation. Rust is a trademark of Facepunch Studios.
+      ${COMPANY.name} · Company number ${COMPANY.regNumber} · ${COMPANY.address}<br/>
+      Need help? ${CONTACT_EMAIL}<br/>
+      ${TRADEMARK_DISCLAIMER}
     </td></tr>
   </table></body></html>`;
 }
 
 export function registrationConfirmationEmail(name: string, verifyUrl: string) {
   return shell(
-    "Welcome to the vault",
+    "Welcome to rust-skins.com",
     `<h1 style="font-size:20px;margin:0 0 12px">Welcome, ${escapeHtml(name)}.</h1>
-     <p style="color:#8FA093;margin:0 0 20px">Your Runevault account is ready. Confirm your email to unlock instant delivery on every relic.</p>
+     <p style="color:#8FA093;margin:0 0 20px">Your rust-skins.com account is ready. Confirm your email to start buying Rust skins.</p>
      <p><a href="${verifyUrl}" style="display:inline-block;background:#E8B44A;color:#0B1512;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:8px">Confirm email</a></p>
      <p style="color:#8FA093;font-size:13px;margin-top:20px">If the button doesn't work, paste this link:<br/><span style="color:#2FA98C">${verifyUrl}</span></p>`
   );
@@ -74,7 +74,7 @@ export function passwordResetEmail(name: string, resetUrl: string) {
   return shell(
     "Reset your password",
     `<h1 style="font-size:20px;margin:0 0 12px">Password reset</h1>
-     <p style="color:#8FA093;margin:0 0 20px">Hi ${escapeHtml(name)}, we received a request to reset your Runevault password. This link expires in 60 minutes.</p>
+     <p style="color:#8FA093;margin:0 0 20px">Hi ${escapeHtml(name)}, we received a request to reset your rust-skins.com password. This link expires in 60 minutes.</p>
      <p><a href="${resetUrl}" style="display:inline-block;background:#E8B44A;color:#0B1512;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:8px">Set a new password</a></p>
      <p style="color:#8FA093;font-size:13px;margin-top:20px">Didn't request this? You can safely ignore this email.<br/><span style="color:#2FA98C">${resetUrl}</span></p>`
   );
@@ -97,7 +97,7 @@ export function orderConfirmationEmail(
   return shell(
     `Order ${reference} confirmed`,
     `<h1 style="font-size:20px;margin:0 0 12px">Thank you, ${escapeHtml(name)}.</h1>
-     <p style="color:#8FA093;margin:0 0 20px">Your relics have been delivered instantly to your inventory. Your invoice is attached as a PDF.</p>
+     <p style="color:#8FA093;margin:0 0 20px">Your order is confirmed. Your Items will be sent to your Steam account by trade offer — accept it in Steam to complete delivery. Delivery is complete only once the Items are in your Steam inventory. If delivery has not completed within 24 hours, reply to info@rust-skins.com with your order reference. Your invoice is attached as a PDF.</p>
      <table role="presentation" width="100%" style="border-collapse:collapse;font-size:14px">${rows}
        <tr><td style="padding:12px 0;font-weight:700">Total</td><td style="padding:12px 0;text-align:right;font-family:monospace;font-weight:700;color:#E8B44A">${total}</td></tr>
      </table>`
