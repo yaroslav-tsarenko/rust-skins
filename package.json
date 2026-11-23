@@ -2,7 +2,7 @@
   "name": "rust-skins",
   "version": "1.0.0",
   "private": true,
-  "description": "rust-skins.com — Rust skins store by BETTERB LTD",
+  "description": "rust-skins.com \u2014 Rust skins store by BETTERB LTD",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +11,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node --env-file=.env --import tsx lib/db/migrate.ts",
     "db:push": "node --env-file=.env node_modules/drizzle-kit/bin.cjs push",
-    "db:seed": "node --env-file=.env --import tsx lib/db/seed.ts"
+    "db:seed": "node --env-file=.env --import tsx lib/db/seed.ts",
+    "catalog:import": "node --env-file=.env --import tsx scripts/import-rust-skins.ts"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.5",

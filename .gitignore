@@ -11,3 +11,6 @@ next-env.d.ts
 .vercel
 .DS_Store
 /drizzle/meta
+
+# Steam market crawl cache (scripts/import-rust-skins.ts)
+scripts/.cache/
